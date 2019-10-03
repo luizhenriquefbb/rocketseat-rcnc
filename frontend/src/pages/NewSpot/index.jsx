@@ -40,12 +40,15 @@ export default function NewSpot({history}) {
             <form onSubmit={handleNewSpot}>
 
                 {/* thumbnail */}
-                <label id="thumbnail" style={{backgroundImage: `url(${preview})`}}>
+                <label id="thumbnail">
                     <input
                         type="file"
                         onChange={(evt) => setThumbnail(evt.target.files[0])}
                     />
+                    {/* camera icon */}
                     <img src={camera} alt="" className={thumbnail ? "hidden" : ""}/>
+                    {/* thumbnail */}
+                    <img src={preview} alt="" className="thumbnail-preview"/>
                 </label>
 
                 {/* company */}
