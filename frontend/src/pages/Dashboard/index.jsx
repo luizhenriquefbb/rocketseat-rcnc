@@ -23,10 +23,6 @@ export default function Dashboard() {
 
     }, []);
 
-    useEffect(() => {
-        console.log('spots', spots);
-    }, [spots])
-
     return (
         <>
             <ul className="spot-list">

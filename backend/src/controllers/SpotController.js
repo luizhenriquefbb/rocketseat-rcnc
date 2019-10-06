@@ -26,9 +26,6 @@ module.exports = {
             return res.status(400).json({ok: false, reason: 'User does not exist' });
         }
 
-        console.clear();
-        console.log('user', user);
-
         // insert in DB
         const parsedTechnologies = technologies.split(",").map(el => el.trim());
         const new_spot = await Spot.create({
