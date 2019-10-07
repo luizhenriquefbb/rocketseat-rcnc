@@ -7,11 +7,6 @@ export default function Book({ navigation }) {
     const spot_id = navigation.getParam('id');
     const [date, setDate] = useState("");
 
-    /** Date Validation */
-    useEffect(() => {
-
-    }, [date])
-
     async function handleSubmit() {
         const user_id = await AsyncStorage.getItem('user_id');
         const response = await api.post(`/spots/${spot_id}/booking`,

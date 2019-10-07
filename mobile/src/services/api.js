@@ -1,5 +1,6 @@
 import axios from "axios";
+import consts from "../consts"
 
 export default axios.create({
-    baseURL:"http://192.168.0.32:3333",
+    baseURL: consts.BASE_URL
 });

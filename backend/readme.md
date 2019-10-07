@@ -19,15 +19,3 @@ or
 ```sh
 yarn dev
 ```
-
-## Features:
-
-- using express
-- using mongoDB
-- sockets to real time communication
-- Upload of images
-
-## TODO:
-
-- sockets to real time communication
-

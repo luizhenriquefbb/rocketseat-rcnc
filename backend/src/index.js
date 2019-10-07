@@ -2,10 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
+const socketio = require('socket.io');
+const http = require('http');
+const LoggedUsers = require("./logged_users");
 
 // create a server
 const app = express();
-const server = require('http').Server(app);
+const server = http.Server(app);
+const io = socketio(server)
 
 
 // connect to mongo atlas
@@ -15,11 +19,28 @@ mongoose.connect('mongodb+srv://RCNC_user:RCNC_user@cluster0-qxsir.mongodb.net/r
         useUnifiedTopology: true
     });
 
+// store logged users
+const loggedUsers = new LoggedUsers();
+
+io.on("connection", socket => {
+    const { user_id } = socket.handshake.query
+
+    loggedUsers.newUser(user_id, socket.id);
+
+});
+
+
+
 // middleware to pass our connected users to the controller
 app.use((req, res, next) => {
+    req.io = io; // use socket in other routes
+    req.connectedUsers = loggedUsers; // use connected users in other routes
+
+    // execute other routes
     return next();
 });
 
+// handle cors origin
 app.use(cors());
 
 // body must be a json

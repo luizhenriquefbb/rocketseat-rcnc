@@ -18,13 +18,3 @@ yarn install
 ```sh
 yarn start
 ```
-
-## Features:
-
-- react hook
- - setState and useEffect and useMemo
-
-
-## TODO:
-
-- make programmer page (for now, only the companies can submit their spots)

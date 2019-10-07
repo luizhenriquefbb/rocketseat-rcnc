@@ -25,12 +25,16 @@ module.exports = {
 
         await new_booking.populate('user').populate('spot').execPopulate();
 
+        // search for owner of the spot
+        const spotOwner_socket = req.connectedUsers.findByUser_id(new_booking.spot.user);
+
+        if (spotOwner_socket){
+            req.io.to(spotOwner_socket).emit("booking_request", new_booking);
+        }
+
         return res.json({
            new_booking
         });
     },
 
-    async index(req, res) {
-        return res.status(400).json({ ok: false, reason: 'in development' });
-    },
 };

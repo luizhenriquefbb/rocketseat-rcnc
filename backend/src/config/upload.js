@@ -1,4 +1,5 @@
-/** File to config multer
+/**
+ * File to config multer
  * to receive uploaded images
  */
 
