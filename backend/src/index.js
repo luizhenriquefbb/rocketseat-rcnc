@@ -6,6 +6,8 @@ const socketio = require('socket.io');
 const http = require('http');
 const LoggedUsers = require("./logged_users");
 
+const consts = require("./config/consts");
+
 // create a server
 const app = express();
 const server = http.Server(app);
@@ -52,5 +54,5 @@ app.use('/files', express.static(path.resolve(__dirname, "..", "uploads")));
 // import routes
 app.use(require('./routes'));
 
-server.listen(3333);
+server.listen(consts.port);
 

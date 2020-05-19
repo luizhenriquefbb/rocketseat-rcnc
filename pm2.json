@@ -1,0 +1,14 @@
+{
+    "apps": [
+        {
+            "name": "rcnc-backend",
+            "cwd": "./backend",
+            "script": "yarn execute"
+        },
+        {
+            "name": "rcnc-frontend",
+            "cwd": "./frontend",
+            "script": "yarn start"
+        }
+    ]
+}
